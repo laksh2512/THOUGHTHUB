@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>THOUGHTHUB - User Post</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Quotes App</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="random.html">Random Quote</a></li>
+                <li><a href="user-post.html">User Post</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>User Post</h2>
+
+        <form id="quote-form">
+            <label for="quote">Quote:</label>
+            <textarea id="quote" name="quote" rows="5" cols="50"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="submitted-quotes">
+            </div>
+    </main>
+
+    <script>
+        const quoteForm = document.getElementById('quote-form');
+        const submittedQuotesDiv = document.getElementById('submitted-quotes');
+
+        quoteForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const submittedQuote = quoteForm.elements.quote.value;
+
+            // Create a new quote element
+            const newQuoteElement = document.createElement('div');
+            newQuoteElement.classList.add('submitted-quote');
+
+            // Add the submitted quote text to the new quote element
+            newQuoteElement.textContent = submittedQuote;
+
+            // Append the new quote element to the submitted-quotes div
+            submittedQuotesDiv.appendChild(newQuoteElement);
+
+            // Clear the quote input field
+            quoteForm.elements.quote.value = '';
+        });
+    </script>
+</body>
+</html>
